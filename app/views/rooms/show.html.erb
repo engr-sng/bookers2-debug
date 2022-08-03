@@ -1,0 +1,25 @@
+
+<div class='container mt-3'>
+	<div class='row'>
+    <h2><%= @message_partner.name %>さんとチャット</h2>
+  </div>
+</div>
+
+<div class='container mt-3'>
+  <% @room_messages.each do |message| %>
+	<div class='row'>
+    <%= message.user.name %>
+    <%= message.message %>
+    <%= message.created_at.strftime("%Y/%m/%d %R") %>
+  </div>
+  <% end %>
+</div>
+
+<div class='container mt-3'>
+	<div class='row'>
+    <%= form_with model: @message, url: room_messages_path(@room.id), local: true, method: :post do |f| %>
+      <%= f.text_area :message , class: 'w-100' %>
+      <%= f.submit "メッセージを送る" %>
+    <% end %>
+  </div>
+</div>

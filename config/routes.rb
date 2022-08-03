@@ -18,5 +18,9 @@ Rails.application.routes.draw do
     get "follower" => "relationships#follower", as: 'follower'
   end
 
+  resources :rooms, only: [:index, :show, :create] do
+    resources :messages, only: [:create]
+    resources :room_enters, only: [:create]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

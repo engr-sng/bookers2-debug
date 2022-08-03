@@ -6,6 +6,20 @@ class BooksController < ApplicationController
     @booknew = Book.new
     @book_comment = BookComment.new
     @book_comments = @book.book_comments
+
+    current_room_enter = RoomEnter.where(user_id: current_user.id)
+    another_room_enter = RoomEnter.where(user_id: @book.user.id)
+
+    if current_user.id != @book.user.id
+      current_room_enter.each do |c|
+        another_room_enter.each do |a|
+          if a.room_id == c.room_id
+            @roomId = Room.find(c.room_id)
+          end
+        end
+      end
+    end
+
   end
 
   def index

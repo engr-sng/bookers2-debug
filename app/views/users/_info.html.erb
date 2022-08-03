@@ -35,6 +35,23 @@
 <% end %>
 
 <div class='row'>
+
+<% if current_user.passive_relationships.exists?(user.active_relationships) %>
+  <% if current_user.rooms.exists?(id: user.rooms) %>
+    <% if @roomId.nil? %>
+
+    <% else %>
+      <p>room作ってるよ：<%= @roomId.id %></p>
+      <%= link_to "チャットを送る", room_path(@roomId.id), class: "btn btn-sm btn-primary" %>
+    <% end %>
+
+  <% else %>
+    <%= link_to "チャットを始める", rooms_path(user_id: user.id), class: "btn btn-sm btn-primary", method: :post %>
+  <% end %>
+<% end %>
+</div>
+
+<div class='row'>
   <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
     <i class="fas fa-user-cog"></i>
   <% end %>
