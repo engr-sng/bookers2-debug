@@ -20,6 +20,10 @@ class BooksController < ApplicationController
       end
     end
 
+    view_count = ViewCount.new
+    view_count.book_id = @book.id
+    view_count.user_id = current_user.id
+    view_count.save
   end
 
   def index
