@@ -1,5 +1,4 @@
 class SearchesController < ApplicationController
-
   def search
     @model_selection = params[:model_selection]
     @retrieval_method = params[:retrieval_method]
@@ -20,5 +19,4 @@ class SearchesController < ApplicationController
       @books = Book.where("title LIKE ?", "#{@word}").or(Book.where("body LIKE ?", "#{@word}"))
     end
   end
-
 end

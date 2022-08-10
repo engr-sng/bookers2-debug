@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-
   def create
     room = Room.find(params[:room_id])
     message = Message.new(message_params)
@@ -11,8 +10,7 @@ class MessagesController < ApplicationController
   end
 
   private
-
-  def message_params
-  params.require(:message).permit(:message)
-  end
+    def message_params
+      params.require(:message).permit(:message)
+    end
 end

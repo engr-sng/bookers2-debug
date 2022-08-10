@@ -20,7 +20,6 @@ class BookCommentsController < ApplicationController
     @book_comments = @book.book_comments
     # redirect_back fallback_location: books_path
     # render :destroy
-
   end
 
   def ensure_correct_user
@@ -31,8 +30,7 @@ class BookCommentsController < ApplicationController
   end
 
   private
-
-  def book_comment_params
-    params.require(:book_comment).permit(:comment)
-  end
+    def book_comment_params
+      params.require(:book_comment).permit(:comment)
+    end
 end

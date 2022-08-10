@@ -2,7 +2,6 @@ class RoomsController < ApplicationController
   before_action :ensure_correct_user, only: [:show]
 
   def index
-
   end
 
   def show
@@ -43,5 +42,4 @@ class RoomsController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
-
 end
