@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "jquery"
 import "script.js"
+// import "mychart.js"
 import "popper.js"
 import "bootstrap"
 import '@fortawesome/fontawesome-free/js/all';

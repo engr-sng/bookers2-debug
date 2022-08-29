@@ -38,4 +38,9 @@ class User < ApplicationRecord
       user.name = "guestuser"
     end
   end
+
+  def post_count(from_day,to_day)
+    books.where(created_at: (Time.zone.now.beginning_of_day - from_day.day)..(Time.zone.now.end_of_day - to_day.day)).count
+  end
+
 end
