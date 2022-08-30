@@ -11,6 +11,21 @@
       <%= render 'books/index',books: @books %>
       <%= render 'books/ratio' %>
       <%= render 'books/graph',user: @user %>
+
+      <%= form_with url: user_search_path(@user.id), local: false, method: :get do |form| %>
+        <%= form.date_field :search_day %>
+        <%= form.submit "検索" %>
+      <% end %>
+
+      <% @books.each do |book| %>
+        作成日：<%= book.created_at %>
+      <% end %>
+
+      <div id="search_result">
+        <% if @search_book.present? %>
+          <%= render 'search', search_book: @search_book %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

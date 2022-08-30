@@ -55,6 +55,20 @@ end
     end
   end
 
+  def search
+    @user = User.find(params[:user_id])
+    @books = @user.books
+    search_day = params[:search_day]
+    if search_day == ""
+      @search_book = "日付を選択してください"
+    else
+      from = Time.parse(search_day).at_beginning_of_day
+      to = Time.parse(search_day).at_end_of_day
+      @search_book = Book.where(created_at: from..to).count
+    end
+  end
+
+
   private
     def user_params
       params.require(:user).permit(:name, :introduction, :profile_image)

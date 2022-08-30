@@ -19,4 +19,5 @@ class SearchesController < ApplicationController
       @books = Book.where("title LIKE ?", "#{@word}").or(Book.where("body LIKE ?", "#{@word}"))
     end
   end
+
 end
