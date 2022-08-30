@@ -1,0 +1,16 @@
+<div class='container mt-5'>
+	<div class='row'>
+  	<div class='mx-auto'>
+      <h2>EditingGroup</h2>
+      <%= form_with model: @group, url: group_path, local: true, method: :patch do |form| %>
+        <%= form.label :name, "グループ名" %><br>
+        <%= form.text_field :name %>
+        <br>
+        <%= form.label :introduction, "紹介文" %><br>
+        <%= form.text_area :introduction %><br>
+        <br>
+        <%= form.submit "UpdateGroup" %>
+      <% end %>
+  	</div>
+  </div>
+</div>
