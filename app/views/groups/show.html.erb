@@ -38,6 +38,11 @@
                 <%= link_to "Join this group", group_group_users_path(@group.id), method: :post %>
               <% end %>
             </td>
+            <td>
+              <% if @group.user_id == current_user.id %>
+                <%= link_to 'Mail',group_new_mail_path(@group.id) %>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>
