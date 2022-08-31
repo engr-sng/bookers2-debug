@@ -28,7 +28,8 @@ Rails.application.routes.draw do
     resources :room_enters, only: [:create]
   end
 
-  resources :groups, only: [:index, :show, :new, :create, :edit, :update]
-
+  resources :groups, only: [:index, :show, :new, :create, :edit, :update] do
+    resource :group_users, only: [:create, :destroy]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

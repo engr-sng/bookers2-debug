@@ -14,6 +14,7 @@
           <tr>
             <td>グループ名</td>
             <td>紹介文</td>
+            <td>メンバー数</td>
             <td>編集</td>
           </tr>
         </thead>
@@ -22,6 +23,7 @@
           <tr>
             <td><%= link_to group.name, group_path(group.id) %></td>
             <td><%= group.introduction %></td>
+            <td><%= group.group_users.count %></td>
             <td>
               <% if group.user_id == current_user.id %>
                 <%= link_to "edit", edit_group_path(group.id) %>

@@ -14,6 +14,7 @@
           <tr>
             <td>グループ名</td>
             <td>紹介文</td>
+            <td>メンバー</td>
             <td>編集</td>
           </tr>
         </thead>
@@ -22,8 +23,19 @@
             <td><%= @group.name %></td>
             <td><%= @group.introduction %></td>
             <td>
+              <ul>
+                <% @group.group_users.each do |group_user| %>
+                  <li><%= group_user.user.name %></li>
+                <% end %>
+              </ul>
+            </td>
+            <td>
               <% if @group.user_id == current_user.id %>
                 <%= link_to "edit", edit_group_path(@group.id) %>
+              <% elsif @group.group_users.exists?(user_id: current_user.id) %>
+                <%= link_to "Leave this group", group_group_users_path(@group.id), method: :delete %>
+              <% else %>
+                <%= link_to "Join this group", group_group_users_path(@group.id), method: :post %>
               <% end %>
             </td>
           </tr>
