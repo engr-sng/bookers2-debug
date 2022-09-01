@@ -31,7 +31,14 @@ class BooksController < ApplicationController
     from = (to - 6.day).at_beginning_of_day
 
     @book = Book.new
-    @books = Book.all.sort { |a, b| b.favorites.where(created_at: from...to).count <=> a.favorites.where(created_at: from...to).count }
+
+    if params[:order] = "new"
+      @books = Book.all.order(created_at: :desc)
+    elsif params[:order] = "rate"
+      @books = Book.all.order(rate: :desc)
+    else
+      @books = Book.all.sort { |a, b| b.favorites.where(created_at: from...to).count <=> a.favorites.where(created_at: from...to).count }
+    end
   end
 
   def create
