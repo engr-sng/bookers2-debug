@@ -22,7 +22,8 @@
             コメント数:<%= @book.book_comments.count %>
           </td>
           <td>
-            <td>閲覧数:<%= @book.view_counts.count %></td>
+          <td>閲覧数:<%= @book.view_counts.count %></td>
+          <td><div id="rate-<%= @book.id %>"></div></td>
           </td>
             <% if @book.user_id == current_user.id %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
@@ -41,3 +42,15 @@
     </div>
   </div>
 </div>
+
+<script>
+$('#rate-<%= @book.id %>').raty({
+  size: 36,
+  starOff:  '<%= asset_path('star-off.png') %>',
+  starOn : '<%= asset_path('star-on.png') %>',
+  starHalf: '<%= asset_path('star-half.png') %>',
+  half: true,
+  readOnly: true,
+  score: <%= @book.rate %>,
+});
+</script>
