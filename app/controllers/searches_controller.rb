@@ -20,4 +20,8 @@ class SearchesController < ApplicationController
     end
   end
 
+  def tag_search
+    @tag = params[:tag]
+    @books = Tag.find_by("name LIKE ?", "%#{@tag}%").books
+  end
 end

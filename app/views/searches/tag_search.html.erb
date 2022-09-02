@@ -1,0 +1,26 @@
+<h2>"<%= @tag %>"の検索結果</h2>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>title</th>
+      <th>opinion</th>
+      <th>Tags</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @books.each do |book| %>
+    <tr>
+      <td><%= image_tag book.user.get_profile_image, size:'50x50' %></td>
+      <td><%= book.title %></td>
+      <td><%= book.body %></td>
+      <td>
+        <% book.tags.each do |tag| %>
+          <%= link_to tag.name, tag_search_path(tag: tag.name) %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

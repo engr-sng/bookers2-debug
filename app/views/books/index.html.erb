@@ -10,6 +10,7 @@
     <div class='col-md-8 offset-md-1'>
       <h2>Books</h2>
       <%= render 'searches/search_form' %>
+      <%= render 'searches/tag_search_form' %>
       <%= link_to "新しい順", books_path(order: "new"), method: :get %>|<%= link_to "評価の高い順", books_path(order: "rate"), method: :get %>
       <div id="book_list">
         <%= render 'index', books: @books %>

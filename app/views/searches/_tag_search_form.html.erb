@@ -1,0 +1,12 @@
+<% if user_signed_in? %>
+  <div class='container mt-5'>
+  	<div class='row'>
+    	<div class='mx-auto'>
+      <%= form_with url: tag_search_path, local: true, method: :get do |f| %>
+        <%= f.text_field :tag %>
+        <%= f.submit "タグ検索" %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
